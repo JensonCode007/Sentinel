@@ -5,17 +5,14 @@ import org.anomaly.anomaly_detection.dto.TransactionDto;
 import org.anomaly.anomaly_detection.services.TransactionProcess;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/transactions")
-public class TranscationController {
+public class TransactionController {
     private final TransactionProcess transactionProcess;
-    @GetMapping("/ingest")
+    @PostMapping("/ingest")
     public ResponseEntity<Void> ingest(@RequestBody TransactionDto dto) {
         transactionProcess.transactionProcess(dto);
         return new ResponseEntity<>(HttpStatus.OK);

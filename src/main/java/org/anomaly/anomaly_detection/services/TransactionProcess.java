@@ -1,11 +1,14 @@
 package org.anomaly.anomaly_detection.services;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.anomaly.anomaly_detection.dto.TransactionDto;
 import org.anomaly.anomaly_detection.entity.Transaction;
 import org.anomaly.anomaly_detection.repository.TransactionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -17,13 +20,16 @@ import java.util.concurrent.TimeUnit;
 public class TransactionProcess {
 
     private final TransactionRepository transactionRepository;
-    private StringRedisTemplate stringRedisTemplate;
+    private final StringRedisTemplate stringRedisTemplate;
     private final FraudEventProducer kafkaProducer;
-    private static final int     VELOCITY_LIMIT = 5;
+    private static final int VELOCITY_LIMIT = 5;
+
+
+
 
     public void transactionProcess(TransactionDto dto) {
 
-        String mockid = "user_" + Math.abs(dto.hashCode() % 1000);
+        String mockid = "user_" + Math.abs(dto.getV1().hashCode() % 1000);
         String redisKey = "velocity:account:" + mockid;
 
         Long transactionCount = stringRedisTemplate.opsForValue().increment(redisKey);

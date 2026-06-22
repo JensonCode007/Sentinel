@@ -10,7 +10,7 @@ public class KafkaTopicConfig {
 
     @Bean
     public NewTopic validTransaction() {
-        return TopicBuilder.name("trasaction-valid")
+        return TopicBuilder.name("transaction-valid")
                 .partitions(3)
                 .replicas(1)
                 .build();
