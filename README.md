@@ -89,7 +89,7 @@ To ensure enterprise-grade reliability, Sentinel features a complete observabili
 * **Prometheus:** Actively scrapes and stores the metric data at 5-second intervals.
 * **Grafana:** Visualizes the system heartbeat through a dynamic, real-time dashboard.
 
-![Grafana Dashboard](images/Grafana_Dashboard.png)
+![Grafana Dashboard](https://github.com/JensonCode007/Sentinel/blob/master/images/Grafana_Dashboard.png?raw=true)
 
 ## ⚙️ CI/CD & Automated Testing
 The backend infrastructure is governed by a robust continuous integration pipeline via **GitHub Actions**. 
