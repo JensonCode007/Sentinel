@@ -15,11 +15,19 @@ Sentinel is a high-throughput, event-driven microservices architecture for real-
 
 ## ⚡ System Performance & AI Metrics
 Sentinel is designed to process financial data before a physical card is removed from a terminal. 
-* **Latency:** End-to-end AI processing (Kafka extraction, JSON decoding, and Isolation Forest scoring) averages **1.5ms to 2.5ms** per transaction.
+* **Latency:** End-to-end AI processing (Kafka extraction, JSON decoding, and Isolation Forest scoring) averages **8ms to 12ms** per transaction.
 * **AI Baseline (Unsupervised):** The system utilizes an unsupervised `IsolationForest` to establish a baseline for zero-day anomaly detection without relying on historical labeled training data. 
     * **True Positives Caught:** 138 anomalous vectors identified successfully.
-    * **Recall:** 28.0%
-    * **Precision:** 24.2%
+    * **Recall:** 28.0% | **Precision:** 24.2%
+
+**Live Processing Audit Log:**
+```text
+2026-06-25 16:46:02,416 - TxID: ce5961ad... | AI Latency: 9.489 ms
+✅ [AI PASSED] Normal transaction verified   | Amount: $6.62
+
+2026-06-25 16:46:02,450 - TxID: 72acf53e... | AI Latency: 10.674 ms
+🚨 [AI BEHAVIORAL ALERT] Fraud Detected!     | Amount: $5026.26
+2026-06-25 16:46:02,460 - TxID: 246444e0... | AI Latency: 9.087 ms
 
 ## 📊 Observability & CI/CD
 * **Monitoring:** Spring Boot Actuator/Micrometer exposes JVM metrics to **Prometheus**, visualized in real-time via **Grafana**.
