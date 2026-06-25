@@ -28,6 +28,7 @@ Sentinel is designed to process financial data before a physical card is removed
 2026-06-25 16:46:02,450 - TxID: 72acf53e... | AI Latency: 10.674 ms
 🚨 [AI BEHAVIORAL ALERT] Fraud Detected!     | Amount: $5026.26
 2026-06-25 16:46:02,460 - TxID: 246444e0... | AI Latency: 9.087 ms
+```
 
 ## 📊 Observability & CI/CD
 * **Monitoring:** Spring Boot Actuator/Micrometer exposes JVM metrics to **Prometheus**, visualized in real-time via **Grafana**.
