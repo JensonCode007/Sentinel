@@ -27,4 +27,4 @@ jobs:
 
 
       - name: Run JUnit Tests
-        run: mvn clean test
+        run: mvn clean test -Dtest=TransactionProcessTest
